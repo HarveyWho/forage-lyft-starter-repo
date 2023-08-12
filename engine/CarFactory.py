@@ -1,5 +1,5 @@
-from battery.nubbin_battery import NubbinBattery
-from battery.spindler_battery import SpindlerBattery
+from battery import NubbinBattery
+from battery import SpindlerBattery
 from car import Car
 from engine.capulet_engine import CapuletEngine
 from engine.sternman_engine import SternmanEngine
