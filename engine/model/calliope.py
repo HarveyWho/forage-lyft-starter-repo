@@ -1,8 +1,8 @@
 from datetime import datetime
 
 from engine.capulet_engine import CapuletEngine
-from battery import SpindlerBattery
+from battery.SpindlerBattery import SpindlerBattery
 
 class Calliope(CapuletEngine, SpindlerBattery):
     def needs_service(self):
-        return (CapuletEngine.needs_service or SpindlerBattery.SpindlerBattery.needs_service)
+        return (CapuletEngine.needs_service or SpindlerBattery.needs_service)
