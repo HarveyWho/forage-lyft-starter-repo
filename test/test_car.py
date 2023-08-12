@@ -187,7 +187,7 @@ class TestRorschach(unittest.TestCase):
         last_service_mileage = 0
         engine = willoughby_engine(current_mileage, last_service_mileage)
 
-        car = Glissade(engine, battery)
+        car = Rorschach(engine, battery)
         self.assertFalse(car.needs_service())
 
 
@@ -195,35 +195,43 @@ class TestThovex(unittest.TestCase):
     def test_battery_should_be_serviced(self):
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 5)
+        battery = NubbinBattery(last_service_date, today)
         current_mileage = 0
         last_service_mileage = 0
+        engine = capulet_engine(current_mileage, last_service_mileage)
 
-        car = Thovex(last_service_date, current_mileage, last_service_mileage)
+        car = Thovex(engine, battery)
         self.assertTrue(car.needs_service())
 
     def test_battery_should_not_be_serviced(self):
         today = datetime.today().date()
         last_service_date = today.replace(year=today.year - 3)
+        battery = NubbinBattery(last_service_date, today)
         current_mileage = 0
         last_service_mileage = 0
+        engine = capulet_engine(current_mileage, last_service_mileage)
 
-        car = Thovex(last_service_date, current_mileage, last_service_mileage)
+        car = Thovex(engine, battery)
         self.assertFalse(car.needs_service())
 
     def test_engine_should_be_serviced(self):
-        last_service_date = datetime.today().date()
+        today = datetime.today().date()
+        last_service_date = today.replace(year=today.year - 3)
+        battery = NubbinBattery(last_service_date, today)
         current_mileage = 30001
         last_service_mileage = 0
-
-        car = Thovex(last_service_date, current_mileage, last_service_mileage)
+        engine = capulet_engine(current_mileage, last_service_mileage)
+        car = Thovex(engine, battery)
         self.assertTrue(car.needs_service())
 
     def test_engine_should_not_be_serviced(self):
-        last_service_date = datetime.today().date()
+        today = datetime.today().date()
+        last_service_date = today.replace(year=today.year - 3)
+        battery = NubbinBattery(last_service_date, today)
         current_mileage = 30000
         last_service_mileage = 0
-
-        car = Thovex(last_service_date, current_mileage, last_service_mileage)
+        engine = capulet_engine(current_mileage, last_service_mileage)
+        car = Thovex(engine, battery)
         self.assertFalse(car.needs_service())
 
 
