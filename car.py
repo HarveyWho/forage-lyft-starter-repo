@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import engine
+from engine import Engine
 
 class Car(ABC):
     def __init__(self, engine: Engine, battery: Battery):
