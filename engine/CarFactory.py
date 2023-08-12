@@ -3,6 +3,7 @@ from datetime import date
 from car import Car
 
 class CarFactory(ABC):
+    #abstract CarFactory to be implemented by each Car
 
     @abstractmethod
     def create_calliope(self, current_date: date, last_service_date: date, 
