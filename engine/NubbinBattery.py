@@ -1,15 +1,14 @@
-from abc import ABC, abstractmethod
 from Battery import Battery
-from datetime import datetime
+from utils import add_years_to_date
 
-class NubbinBattery(Battery, ABC):
+class NubbinBattery(Battery):
     def __init__(self, last_service_date, current_date):
-        super().__init__(last_service_date)
         self.last_service_date = last_service_date
         self.current_date = current_date
 
-
-    @abstractmethod
     def needs_service(self):
-        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 4)
-        return service_threshold_date < datetime.today().date()
+        date_to_change_battery = add_years_to_date(self.last_service_date, 4)
+        if date_to_change_battery < self.current_date:
+            return True
+        else:
+            return False
